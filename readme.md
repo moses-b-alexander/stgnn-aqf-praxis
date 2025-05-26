@@ -66,7 +66,7 @@ The air quality data was obtained from the Urban Air Project by Microsoft Resea
 
 ---
 
-## 📁 Directory Structure (inside experiment.zip)
+## 📁 Directory Structure of experiment.zip
 
 ```
 experiment.zip
