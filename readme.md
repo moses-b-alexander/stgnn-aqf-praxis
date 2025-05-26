@@ -7,7 +7,7 @@ This repository contains the full experimental setup for reproducing the results
 The repository includes:
 
 * `src/`: main experiment source code
-* `weather/`: covariate data used in dataset creation
+* `weather/`: covariate climatology data used for augmentation
 * `requirements.txt`: dependency list for installation via Python 3.12 pip
 * `README.md`: full experiment documentation and instructions
 * `experiment.zip`: archive containing a full copy of the repository structure from the experimental results, including `src/` and `weather/` as well as additional components listed below
@@ -16,7 +16,7 @@ The repository includes:
 
 ## 🔍 Objective
 
-STGNNs augmented with spatiotemporal positional encoding and exogenous covariates representing long-term climate trends predict future air pollution values based on historical data. By modelling spatial and temporal relationships between sensors, areas of concentration and patterns of dispersion can be better understood by policymakers (Zheng et al, 2015). Thus, they can make more optimal decisions to improve air quality via various environmental measures aimed to mitigate the concerning factors identified via spatiotemporal analysis of urban air quality.
+STGNNs enhanced with spatiotemporal positional encoding and exogenous covariates representing long-term climate trends predict future air pollution values based on historical data. By modelling spatial and temporal relationships between sensors, areas of concentration and patterns of dispersion can be better understood by policymakers (Zheng et al, 2015). Thus, they can make more optimal decisions to improve air quality via various environmental measures aimed to mitigate the concerning factors identified via spatiotemporal analysis of urban air quality.
 
 ---
 
@@ -24,12 +24,12 @@ STGNNs augmented with spatiotemporal positional encoding and exogenous covariate
 
 Each model architecture consists of four stages:
 
-* **Positional Encoding (optional)**: Applied to raw features using either additive or concatenative fusion to enhance input representation, prior to the spatial component
+* **Positional Encoding**: Applied to raw features using either additive or concatenative fusion to enhance input representation, prior to the spatial component
 * **Spatial Component**: One of GraphConv, DiffusionConv, or GATConv
 * **Temporal Component**: One of RNN, GRU, or LSTM
-* **Attention (optional)**: Applied after the temporal component to refine joint spatiotemporal representation; followed by a linear decoder
+* **Attention**: Applied after the temporal component to refine joint spatiotemporal representation; followed by a linear decoder
 
-Model variants differ in positional encoding strategy, spatial-temporal combinations, and whether attention is applied. The hyperparameter definitions remain the same throughout. 
+Model variants differ in positional encoding strategy, spatial-temporal component combinations, and whether the bidimensional attention mechanism is applied. The hyperparameter definitions remain the same throughout. 
 
 ---
 
@@ -71,13 +71,13 @@ The air quality data was obtained from the Urban Air Project by Microsoft Resea
 ```
 experiment.zip
 ├── src/                 # Main experiment source code (duplicate of root src/)
-├── weather/             # Covariate data (duplicate of root weather/)
-├── dataset/             # Final dataset used for training (merged from data/ and weather/)
-├── data/                # Raw graph data downloaded by tsl
-├── results/             # CSVs from three trials (results.csv)
-├── plots/               # 52 summary plots generated from results
-├── logs/ (excluded)     # Large training logs and model checkpoints (45 models)
-├── requirements.txt     # Python dependencies
+├── weather/             # Covariate climatology data files (duplicate of root weather/)
+├── data/                # Raw air quality sensor network dataset files downloaded by tsl
+├── dataset/             # Final dataset used for training (merged from the files within data/ and weather/)
+├── results/             # average results of three trials for each of 45 models
+├── plots/               # 52 summary plots of model error and training diagnostics generated from results/
+├── requirements.txt     # Python 3.12 dependencies
+├── logs/ (excluded)     # Training logs and model checkpoints for all 3 trials of 45 models each
 ```
 
 ---
@@ -142,13 +142,13 @@ Metrics for one full run are saved in `experiment.txt`.
 The `experiment.zip` archive contains:
 
 * `src/` and `weather/`: duplicated from repository root
-* `requirements.txt`: dependency list for installation
-* `results/`: final `results.csv` recording performance from three trials
-* `plots/`: 52 summary chart images (.png) generated from `results.csv`
-* `data/`: raw graph dataset downloaded by `tsl`
-* `dataset/`: merged dataset created from `data/` and `weather/`
+* `data/`: raw graph dataset files downloaded by `tsl`
+* `dataset/`: merged dataset created from files within `data/` and `weather/`
+* `results/`: `results_final.csv` recording performance for all 45 models, averaged over three trials
+* `plots/`: 52 summary chart images (.png) generated from `results_final.csv`
+* `requirements.txt`: dependency list for installation via Python 3.12 pip
 
-> ⚠️ `logs/` is excluded due to large folder size (checkpoints for 45 models)
+> ⚠️ `logs/` is excluded due to large folder size, which contains checkpoint files for all 3 trials of 45 models each
 
 ---
 
@@ -174,6 +174,7 @@ Alexander, M. B. (2025). ***Evaluating Spatiotemporal Graph Neural Network Archi
 ***Moses Alexander***
 
 Email: **m.alexander1@gwmail.gwu.edu**
+
 GitHub: **https://github.com/moses-b-alexander/**
 
 ---
