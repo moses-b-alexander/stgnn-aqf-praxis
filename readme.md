@@ -1,6 +1,6 @@
 # ***Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting***
 
-This codebase supports the doctoral dissertation titled Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting, available at https://github.com/moses-b-alexander/stgnn-aqf-praxis/ .
+This codebase supports the doctoral dissertation titled **Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting**, available at *https://github.com/moses-b-alexander/stgnn-aqf-praxis/* .
 
 This repository contains the full experimental setup for reproducing the results of my research on spatiotemporal graph neural networks. It includes source code, covariate data, and an archive containing the experimental code, data, and results from three trials.
 
@@ -165,15 +165,15 @@ This experiment evaluated 45 spatiotemporal graph neural network models across t
 
 ## 📚 Citation
 
-***Alexander, M. B.*** (2025). ***Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting*** (Doctoral dissertation). The George Washington University. https://github.com/moses-b-alexander/stgnn-aqf-praxis/
+Alexander, M. B. (2025). ***Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting*** (Doctoral dissertation). The George Washington University. https://github.com/moses-b-alexander/stgnn-aqf-praxis/
 
 ---
 
 ## 👤 Author
 
 ***Moses Alexander***
-Email: ***m.alexander1@gwmail.gwu.edu***
-GitHub: ***https://github.com/moses-b-alexander/***
+Email: **m.alexander1@gwmail.gwu.edu**
+GitHub: **https://github.com/moses-b-alexander/**
 
 ---
 
