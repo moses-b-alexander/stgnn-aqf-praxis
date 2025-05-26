@@ -172,6 +172,7 @@ Alexander, M. B. (2025). ***Evaluating Spatiotemporal Graph Neural Network Archi
 ## 👤 Author
 
 ***Moses Alexander***
+
 Email: **m.alexander1@gwmail.gwu.edu**
 GitHub: **https://github.com/moses-b-alexander/**
 
