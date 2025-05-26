@@ -1,6 +1,6 @@
 # ***\[Project Title Placeholder]***
 
-This codebase supports the doctoral dissertation titled ***\[Title of the thesis]***, available at ***\[URL]***.
+This codebase supports the doctoral dissertation titled ***\[Title of the thesis]***, available at https://github.com/moses-b-alexander/stgnn-aqf-praxis/ .
 
 This repository contains the full experimental setup for reproducing the results of my research on spatiotemporal graph neural networks. It includes source code, covariate data, and an archive containing the experimental code, data, and results from three trials.
 
@@ -35,7 +35,7 @@ Model variants differ in positional encoding strategy, spatial-temporal combinat
 
 ## ⚙️ Methodology
 
-The air quality data was obtained from the Urban Air Project by Microsoft Research (2014–2015) ***\[link]***, and exogenous climatology covariates for the relevant timeframe were sourced from the World Bank Group's Climate Knowledge Portal ***\[link]***.
+The air quality data was obtained from the Urban Air Project by Microsoft Research (2014–2015) https://www.microsoft.com/en-us/research/project/urban-air/, and exogenous climatology covariates for the relevant timeframe were sourced from the World Bank Group's Climate Knowledge Portal https://climateknowledgeportal.worldbank.org/country/china/climate-data-historical. The models were developed using Torch Spatiotemporal (tsl): https://torch-spatiotemporal.readthedocs.io/en/latest/index.html.
 
 1. **Load and Save Datasets**
 2. **Define Spatiotemporal Graph Data**
@@ -118,7 +118,7 @@ python src/main.py > visualization.txt
 This will produce:
 
 * `results/results.csv` (aggregated results from the trial)
-* `plots/` (53 `.png` summary visualizations of model errors, parameter counts, and training times)
+* `plots/` (52 `.png` summary visualizations of model errors, parameter counts, and training times)
 
 ---
 
@@ -165,15 +165,15 @@ This experiment evaluated 45 spatiotemporal graph neural network models across t
 
 ## 📚 Citation
 
-***AuthorLastName, A. A.*** (2025). ***\[Title of the thesis]*** (Doctoral dissertation). ***\[University Name]***. ***\[Repository or URL]***
+***Alexander, M. B.*** (2025). ***\[Title of the thesis]*** (Doctoral dissertation). The George Washington University. https://github.com/moses-b-alexander/stgnn-aqf-praxis/
 
 ---
 
 ## 👤 Author
 
-***\[Your Full Name]***
-Email: ***\[******[your.email@example.com](mailto:your.email@example.com)******]***
-GitHub: ***\[******[https://github.com/yourusername](https://github.com/yourusername)******]***
+***Moses Alexander***
+Email: ***m.alexander1@gwmail.gwu.edu***
+GitHub: ***https://github.com/moses-b-alexander/***
 
 ---
 
