@@ -8,9 +8,9 @@ The repository includes:
 
 * `src/`: main experiment source code
 * `weather/`: covariate climatology data used for augmentation
+* `experiment.zip`: archive containing a full copy of the repository structure from the experimental results, including `src/` and `weather/` as well as additional components listed below
 * `requirements.txt`: dependency list for installation via Python 3.12 pip
 * `README.md`: full experiment documentation and instructions
-* `experiment.zip`: archive containing a full copy of the repository structure from the experimental results, including `src/` and `weather/` as well as additional components listed below
 
 ---
 
@@ -141,7 +141,8 @@ Metrics for one full run are saved in `experiment.txt`.
 
 The `experiment.zip` archive contains:
 
-* `src/` and `weather/`: duplicated from repository root
+* `src/`: duplicated from repository root
+* `weather/`: duplicated from repository root
 * `data/`: raw graph dataset files downloaded by `tsl`
 * `dataset/`: merged dataset created from files within `data/` and `weather/`
 * `results/`: `results_final.csv` recording performance for all 45 models, averaged over three trials
