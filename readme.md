@@ -2,12 +2,12 @@
 
 This repository supports the doctoral dissertation titled **Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting**, available at **https://github.com/moses-b-alexander/stgnn-aqf-praxis**.
 
-This repository contains the full experimental setup for reproducing the results of my research on spatiotemporal graph neural networks for air quality forecasting. It includes source code, dataset, and a zipped archive containing the experimental results from three trials.
+This repository contains the full experimental setup for reproducing the results of my research on spatiotemporal graph neural networks for air quality forecasting. It includes source code, dataset, and a zipped archive containing the experimental results from 3 trials.
 
 This repository includes:
 
 * `src/`: source code for running and evaluating experiment
-* `weather/`: covariate climatology data used in dataset creation
+* `weather/`: covariate climatology data
 * `experiment.zip`: archive containing a full copy of the repository structure from the experimental run, including `src/` and `weather/` as well as additional components listed below
 * `requirements.txt`: dependency list for installation via Python 3.12 pip
 * `README.md`: full experiment documentation and instructions
@@ -52,7 +52,7 @@ The air quality data was obtained from the Urban Air Project by Microsoft Resea
 5. **Merge datasets**
 6. **Prepare Model for Training**
 
-   * Split data into training, validation, and test sets in the ratio of *0.80* / *0.05* / *0.15*
+   * Split data into training, validation, and test sets in the ratio of *80%* / *05%* / *15%*
    * Set batch size to *64*
    * Define loss metrics *MAE* and *MAPE* for evaluation and monitoring
    * Configure optimization strategy with learning rate *0.001*, optimization algorithm *Adam*, and weight decay *0.0001*
@@ -66,16 +66,16 @@ The air quality data was obtained from the Urban Air Project by Microsoft Resea
 
 ---
 
-## 📁 Directory Structure (inside experiment.zip)
+## 📁 Directory Structure of *experiment.zip*
 
 ```
 experiment.zip
 ├── src/                 # Source code (duplicate of root src/)
-├── weather/             # Covariate climatology data (duplicate of root weather/)
-├── data/                # Spatiotemporal graph data downloaded using tsl
-├── dataset/             # Final processed dataset used for training (merged from files within data/ and weather/)
-├── table/               # CSV of results averaged over 3 trials (table_final.csv)
-├── plots/               # 52 summary visualizations generated using table/
+├── weather/             # Covariate climatology data files in CSV format (duplicate of root weather/)
+├── data/                # Raw air quality sensor network data files in H5 and NPY formats and downloaded using tsl
+├── dataset/             # Final processed dataset used for training in PT format (merged from files within data/ and weather/)
+├── table/               # table of results averaged over 3 trials in CSV format (table_final.csv)
+├── plots/               # 52 summary visualizations of model errors and diagnostic metrics generated from table/ in PNG format
 ├── requirements.txt     # Python 3.12 dependencies
 ├── logs/ (excluded)     # Training logs and model checkpoints for all 3 trials of 45 models each
 ```
