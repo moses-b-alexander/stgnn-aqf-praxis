@@ -70,14 +70,14 @@ The air quality data was obtained from the Urban Air Project by Microsoft Resea
 
 ```
 experiment.zip
-├── src/                 # Source code (duplicate of root src/)
-├── weather/             # Covariate climatology data files in CSV format (duplicate of root weather/)
-├── data/                # Raw air quality sensor network data files in H5 and NPY formats and downloaded using tsl
-├── dataset/             # Final processed dataset used for training in PT format (merged from files within data/ and weather/)
-├── table/               # table of results averaged over 3 trials in CSV format (table_final.csv)
-├── plots/               # 52 summary visualizations of model errors and diagnostic metrics generated from table/ in PNG format
+├── src/                 # Source code (1) file (duplicate of root src/)
+├── weather/             # Covariate climatology data (2) files in CSV format (duplicate of root weather/)
+├── data/                # Raw air quality sensor network data (2) files in H5 and NPY formats and downloaded using tsl
+├── dataset/             # Final processed dataset (1) file used for training in PT format (merged from files within data/ and weather/)
+├── table/               # table (1) file in CSV format of results averaged over 3 trials during experiment
+├── plots/               # summary visualization (52) files in PNG format of model errors and diagnostic metrics produced from table/
 ├── requirements.txt     # Python 3.12 dependencies
-├── logs/ (excluded)     # Training logs and model checkpoints for all 3 trials of 45 models each
+├── logs/ (excluded)     # Training logs and model checkpoints for all 3 trials of 45 models each (135 subdirectories)
 ```
 
 ---
@@ -144,12 +144,12 @@ The `experiment.zip` archive contains:
 * `src/`: duplicated from repository root
 * `weather/`: duplicated from repository root
 * `data/`: spatiotemporal graph dataset provided by `tsl`
-* `dataset/`: merged dataset created from files within `data/` and `weather/`
-* `table/`: summative `table_final.csv` recording average performance over 3 trials for all 45 models
-* `plots/`: 52 summary chart images (.png) visualizing `table_final.csv`
+* `dataset/`: merged dataset created from processing and fusing files within `data/` and `weather/`
+* `table/`: summative table recording average performance over 3 trials for all 45 models
+* `plots/`: 52 summary chart images visualizing prediction errors, parameter counts, and training runtimes from `table/`
 * `requirements.txt`: dependency list for installation via Python 3.12 pip
 
-> ⚠️ `logs/` is excluded due to large folder size (checkpoints for each of 45 models for all 3 trials)
+> ⚠️ `logs/` is excluded due to large folder size, because of checkpoints for each of 45 models for all 3 trials
 
 ---
 
@@ -159,14 +159,14 @@ This experiment evaluated 45 spatiotemporal graph neural network models over 3 t
 
 * **DiffConv + LSTM** combinations achieved the highest overall predictive accuracy.
 * **Positional encoding** without attention, either additive or concatenative mode, provided consistent but marginal improvements in MAE across most architectures.
-* **Attention combined with either positional encoding mode** significantly and consistently improved predictive accuracy when used alongside LSTM or GRU temporal components.
-* **Concatenative positional encoding with attention** led to catastrophic degradation when paired with RNNs as the temporal component. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational capacity of the model, resulting in systematically poor and considerably degraded performance across all trials.
+* **Attention combined with either positional encoding mode** significantly and consistently improved predictive accuracy when used in combination with LSTM or GRU temporal components.
+* **Concatenative positional encoding with attention** led to catastrophic degradation when paired with RNNs as the temporal component. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational capacity of the model architecture, resulting in systematically poor and considerably diminished performance across all trials.
 
 ---
 
 ## 📚 Citation
 
-Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting* (Doctoral dissertation). The George Washington University. https://github.com/moses-b-alexander/stgnn-aqf-praxis
+Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting* (Doctoral dissertation). The George Washington University. https://github.com/moses-b-alexander/stgnn-aqf-praxis/
 
 ---
 
