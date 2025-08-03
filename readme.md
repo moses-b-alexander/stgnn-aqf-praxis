@@ -1,14 +1,14 @@
 # ***Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting***
 
-This repository supports the doctoral dissertation titled **Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting**, available at **https://github.com/moses-b-alexander/stgnn-aqf-praxis**.
+This repository supports the doctoral dissertation titled **Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting**, available at **https://github.com/moses-b-alexander/stgnn-aqf-praxis**.
 
-This repository contains the full experimental setup for reproducing the results of my research on spatiotemporal graph neural networks for air quality forecasting. It includes source code, dataset, and a zipped archive containing the experimental results from 3 trials.
+This repository contains the full experimental setup for reproducing the results of my research on spatiotemporal graph neural networks for air pollution forecasting. It includes source code, dataset, and a zipped archive containing the experimental archive over 3 trials.
 
 This repository includes:
 
 * `src/`: source code for running and evaluating experiment
 * `weather/`: covariate climatology data
-* `experiment.zip`: archive containing a full copy of the repository structure from the experimental run, including `src/` and `weather/` as well as additional components listed below
+* `experiment.zip`: archive containing a full copy of the repository structure from the experiment
 * `requirements.txt`: dependency list for installation via Python 3.12 pip
 * `README.md`: full experiment documentation and instructions
 
@@ -16,7 +16,7 @@ This repository includes:
 
 ## 🔍 Objective
 
-Spatiotemporal graph neural networks, augmented with spatiotemporal positional encoding and exogenous covariates capturing long-term climate trends, predict future air pollution values based on historical data. By modelling spatial and temporal relationships between air quality sensors, areas of concentration and patterns of dispersion can be more effectively understood by policymakers (Zheng et al, 2015). Thus, they can make more optimal decisions to improve air quality via various environmental measures aimed to mitigate the concerning pollution-related factors identified via spatiotemporal analysis of urban air quality.
+Spatiotemporal graph neural networks, augmented with representational enhancements like positional encoding and attention, forecast air pollution concentration values using air quality sensor network data and long-term climatology statistics. By modeling spatiotemporal relationships among air quality sensors, policymakers can more thoroughly understand patterns of pollution dispersion in cities (Zheng et al, 2015). Thus, they can make more optimal decisions to improve air quality via various environmental policy measures, consequently increasing life expectancy for urban residents.
 
 ---
 
@@ -182,3 +182,4 @@ GitHub: **https://github.com/moses-b-alexander/**
 ## ⚖️ License
 
 No license — all rights reserved.
+
