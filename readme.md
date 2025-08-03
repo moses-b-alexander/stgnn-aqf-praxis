@@ -134,10 +134,10 @@ Each experimental run evaluates:
 
 Key findings include:
 
-* **DiffConv + LSTM** combinations achieved the highest overall predictive accuracy, with **DiffConv + GRU** combinations following closely behind. These architectural designs included positional encoding and attention.
-* **Positional encoding** without attention, either additive or concatenative mode, provided consistent but marginal improvements in MAE across most architectures.
+* **DiffConv + LSTM** combinations achieved the highest overall predictive accuracy, with **DiffConv + GRU** combinations following closely behind. Both of these architectural configurations included both positional encoding and attention.
+* **Positional encoding** without attention, either additive or concatenative mode, provided consistent but marginal improvements in MAE across most architectural configurations.
 * **Attention combined with either positional encoding mode** significantly and consistently improved predictive accuracy when used in combination with LSTM or GRU temporal components.
-* **Concatenative positional encoding with attention** led to catastrophic degradation in forecasting accuracy when combined with RNNs as the temporal component of the architecture. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational quality of the spatiotemporal embeddings learned in this model architecture. This resulted in systematically poor and considerably diminished performance overall, due to a poorly structured and miscalibrated embedding space.
+* **Concatenative positional encoding with attention** led to catastrophic degradation in forecasting accuracy when combined with RNNs as the temporal component. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational quality of the learned spatiotemporal embeddings. This resulted in systematically poor and considerably diminished performance overall, due to a poorly structured and miscalibrated embedding space.
 
 ---
 
@@ -150,6 +150,7 @@ Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Archite
 ## License
 
 No license — all rights reserved.
+
 
 
 
