@@ -9,7 +9,6 @@ This repository includes:
 * `src/`: source code for running and evaluating experiment
 * `experiment.zip`: archive containing a full copy of the repository structure from the experiment
 * `requirements.txt`: dependency list for installation via Python 3.12 pip
-* `README.md`: document describing purpose and content of repository
 
 ---
 
@@ -157,6 +156,7 @@ Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Archite
 ## License
 
 No license — all rights reserved.
+
 
 
 
