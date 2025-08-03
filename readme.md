@@ -19,15 +19,10 @@ Air pollution, exacerbated by urban activity and layout, harms human health. The
 
 STGNNs forecast PM2.5 concentration values from historical data recorded by air quality sensor networks. By modeling spatiotemporal patterns using air quality sensor network data, STGNNs support policymakers in more precise understanding of urban air pollution dynamics (Zheng et al, 2015).
 
-•	Develop a STGNN model to forecast PM2.5 pollution concentration values in PPM
-o	Evaluate multiple graph convolutional networks to model spatial patterns
-o	Evaluate multiple recurrent neural networks to model temporal patterns
-•	Enhance input representations with additive and concatenative positional encoding
-o	Evaluate learnable centrality and shortest path encodings
-o	Evaluate learnable timestep encodings
-•	Apply bidimensional attention mechanism to refine spatiotemporal representations
-•	Investigate the accuracy and utility of STGNNs for forecasting air pollution
-
+* Develop a STGNN model to forecast PM2.5 pollution concentration values in PPM
+* Enhance input representations with additive and concatenative positional encoding
+* Apply bidimensional attention mechanism to refine spatiotemporal representations
+* Investigate the accuracy and utility of STGNNs for forecasting air pollution
 
 ---
 
@@ -162,6 +157,7 @@ Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Archite
 ## License
 
 No license — all rights reserved.
+
 
 
 
