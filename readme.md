@@ -46,7 +46,7 @@ The air quality data was obtained from the Urban Air Project by Microsoft Resea
 3. **Preprocess air quality sensor network data**
 
    * Standardize PM2.5 concentration values
-4. **Preprocess climatology statistical data**
+4. **Preprocess exogenous covariate climatology data**
 
    * Align covariate feature sequence lengths through duplication by hour
 5. **Merge datasets**
@@ -70,8 +70,8 @@ The air quality data was obtained from the Urban Air Project by Microsoft Resea
 ```
 experiment.zip
 ├── src/                 # Source code (1) file in .PY format (duplicate of root src/)
-├── weather/             # Covariate climatology data (2) files in .CSV format (duplicate of root weather/)
-├── data/                # Raw air quality sensor network data (2) files in .H5 and .NPY formats and downloaded using tsl module
+├── weather/             # Exogenous covariate climatology data (2) files in .CSV format (duplicate of root weather/)
+├── data/                # Air quality sensor network data (2) files in .H5 and .NPY formats and downloaded using tsl module
 ├── dataset/             # Final processed dataset (1) file used for training in .PT format (merged from data in files within data/ and weather/)
 ├── table/               # Table of forecasting error, diagnostic metrics, model parameter count, and training duration (1) file in CSV format, averaged over 3 trials for each of 45 models
 ├── plots/               # Summary visualization (52) files in PNG format of experimental data recorded in table/
@@ -160,6 +160,7 @@ GitHub: **https://github.com/moses-b-alexander/**
 ## ⚖️ License
 
 No license — all rights reserved.
+
 
 
 
