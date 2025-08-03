@@ -18,6 +18,7 @@ Air pollution, exacerbated by urban activity and layout, harms human health. The
 
 STGNNs forecast PM2.5 concentration values from historical data recorded by air quality sensor networks. By modeling spatiotemporal patterns using air quality sensor network data, STGNNs support policymakers in more precise understanding of urban air pollution dynamics (Zheng et al, 2015).
 
+The research objectives are:
 * Develop a STGNN model to forecast PM2.5 pollution concentration values in PPM
 * Enhance input representations with additive and concatenative positional encoding
 * Apply bidimensional attention mechanism to refine spatiotemporal representations
@@ -40,7 +41,7 @@ Model architectural configurations differ in positional encoding strategy, spati
 
 ## Methodology
 
-The air quality sensor network data were obtained from the Urban Air Project by Microsoft Research (2014–2015) *https://www.microsoft.com/en-us/research/project/urban-air/*, and exogenous covariate climatology data for the relevant timeframe were retrieved from the World Bank Group's Climate Knowledge Portal *https://climateknowledgeportal.worldbank.org/country/china/climate-data-historical*. The models were developed using Torch Spatiotemporal library (tsl): https://torch-spatiotemporal.readthedocs.io/en/latest/index.html. Several common Python machine learning-related frameworks were also employed: PyTorch, Pandas, NumPy, Einops, Matplotlib, and others.
+The air quality sensor network data were obtained from the Urban Air Project by Microsoft Research (2014–2015) *https://www.microsoft.com/en-us/research/project/urban-air/*, and exogenous covariate climatology data for the relevant timeframe were retrieved from the World Bank Group's Climate Knowledge Portal *https://climateknowledgeportal.worldbank.org/country/china/climate-data-historical*. The models were developed using Torch Spatiotemporal library (tsl): https://torch-spatiotemporal.readthedocs.io/en/latest/index.html. Several common Python machine learning-related frameworks were also employed: PyTorch, Pandas, NumPy, Einops, Matplotlib, etc.
 
 1. **Load datasets**
 2. **Define air quality sensor network data**
@@ -119,7 +120,7 @@ This will train all 45 models once, with the defined hyperparameters.
 python src/main.py > visualization.txt
 ```
 
-This will produce the table of forecasting errors and diagnostic metrics from the trial and 52 summary visualizations of forecasting mean absolute errors, model parameter counts, and training durations.
+This will produce the table of loss and diagnostic metrics from the trial and 52 summary visualizations of forecasting mean absolute errors, model parameter counts, and training durations.
 
 ---
 
@@ -138,7 +139,7 @@ Each experimental run evaluates:
 
 ## Results
 
-Key findings include:
+The key findings are:
 
 * **DiffConv + LSTM** combinations achieved the highest overall predictive accuracy, with **DiffConv + GRU** combinations following closely behind. Both of these architectural configurations included both positional encoding and attention.
 * **Positional encoding without attention**, either additive or concatenative mode, provided consistent but marginal improvements in MAE across most architectural configurations.
