@@ -7,7 +7,6 @@ This repository contains the full experimental setup for reproducing the results
 This repository includes:
 
 * `src/`: source code for running and evaluating experiment
-* `weather/`: covariate climatology statistics
 * `experiment.zip`: archive containing a full copy of the repository structure from the experiment
 * `requirements.txt`: dependency list for installation via Python 3.12 pip
 * `README.md`: document describing purpose and content of repository
@@ -85,13 +84,13 @@ experiment.zip
 
 Ensure you are using **Python 3.12**.
 
-### 📦 Installation
+### Installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### ▶️ Run the Experiment
+### Run the experiment
 
 1. Open `src/main.py`
 2. **Uncomment lines 1660–1681**
@@ -101,9 +100,9 @@ pip install -r requirements.txt
 python src/main.py > experiment.txt
 ```
 
-This will train all 45 models once (with the predefined hyperparameters).
+This will train all 45 models once, with the defined hyperparameters.
 
-### 📊 Generate Table and Plots
+### Generate table of results and summary plots
 
 1. Open `src/main.py`
 2. **Comment lines 1660–1681 (to avoid rerunning the experiment)**
@@ -114,11 +113,11 @@ This will train all 45 models once (with the predefined hyperparameters).
 python src/main.py > visualization.txt
 ```
 
-This will produce the table of prediction errors and diagnostic metrics from the trial and 52 summary visualizations of forecasting mean absolute errors, model parameter counts, and training durations:
+This will produce the table of prediction errors and diagnostic metrics from the trial and 52 summary visualizations of forecasting mean absolute errors, model parameter counts, and training durations.
 
 ---
 
-## 📈 Evaluation
+## Evaluation
 
 Each experimental run evaluates:
 
@@ -131,7 +130,7 @@ Each experimental run evaluates:
 
 ---
 
-## 📜 Results
+## Results
 
 Key findings include:
 
@@ -142,24 +141,16 @@ Key findings include:
 
 ---
 
-## 📚 Citation
+## Citation
 
 Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting* (Doctoral dissertation). The George Washington University. https://github.com/moses-b-alexander/stgnn-aqf-praxis/
 
 ---
 
-## 👤 Author
-
-***Moses B. Alexander***
-
-Email: **mosesalexander209@gmail.com**
-GitHub: **https://github.com/moses-b-alexander/**
-
----
-
-## ⚖️ License
+## License
 
 No license — all rights reserved.
+
 
 
 
