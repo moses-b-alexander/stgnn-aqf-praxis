@@ -1,4 +1,4 @@
-# ***Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting***
+# ***Evaluating Spatiotemporal Graph Neural Network Architectures for Air Pollution Forecasting***
 
 This repository supports the doctoral dissertation titled **Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting**, available at **https://github.com/moses-b-alexander/stgnn-aqf-praxis**.
 
@@ -7,10 +7,10 @@ This repository contains the full experimental setup for reproducing the results
 This repository includes:
 
 * `src/`: source code for running and evaluating experiment
-* `weather/`: covariate climatology data
+* `weather/`: covariate climatology statistics
 * `experiment.zip`: archive containing a full copy of the repository structure from the experiment
 * `requirements.txt`: dependency list for installation via Python 3.12 pip
-* `README.md`: full experiment documentation and instructions
+* `README.md`: document describing purpose and content of repository
 
 ---
 
@@ -38,29 +38,29 @@ Model variants differ in positional encoding strategy, spatial-temporal module c
 The air quality data was obtained from the Urban Air Project by Microsoft Research (2014–2015) *https://www.microsoft.com/en-us/research/project/urban-air/*, and exogenous climatology covariates for the relevant timeframe were sourced from the World Bank Group's Climate Knowledge Portal *https://climateknowledgeportal.worldbank.org/country/china/climate-data-historical*. The models were developed using Torch Spatiotemporal library (tsl): https://torch-spatiotemporal.readthedocs.io/en/latest/index.html.
 
 1. **Load datasets**
-2. **Define spatiotemporal graph data**
+2. **Define air quality sensor network data**
 
    * Construct edges using distance threshold
    * Apply masking for missing graph features
    * Specify forecasting horizon and training window length
-3. **Preprocess Spatiotemporal Graph Data**
+3. **Preprocess air quality sensor network data**
 
    * Standardize PM2.5 concentration values
-4. **Preprocess Covariate Climatology Data**
+4. **Preprocess climatology statistical data**
 
    * Align covariate feature sequence lengths through duplication by hour
 5. **Merge datasets**
-6. **Prepare Model**
+6. **Prepare model**
 
    * Split data into training, validation, and test datasets
    * Set batch size
-   * Define loss metrics
+   * Define loss metric and diagnostic metrics
    * Configure optimization strategy
-7. **Establish logging and checkpointing**
+7. **Establish logging and checkpointing for model**
 8. **Train and test Model**
 9. **Evaluate Output**
 
-   * Analyze prediction error and diagnostic metrics
+   * Analyze forecasting error and diagnostic metrics
    * Review training and evaluation logs
 
 ---
@@ -76,7 +76,7 @@ experiment.zip
 ├── table/               # Table of forecasting error, diagnostic metrics, model parameter count, and training duration (1) file in CSV format, averaged over 3 trials for each of 45 models
 ├── plots/               # Summary visualization (52) files in PNG format of experimental data recorded in table/
 ├── requirements.txt     # Python 3.12 pip dependency list
-├── logs/ (excluded)     # Training logs and model checkpoints for all 3 trials of 45 models each (135 subdirectories)
+├── logs/ (excluded)     # Training logs and model checkpoints for all 3 trials of 45 models each
 ```
 
 ---
@@ -123,10 +123,10 @@ This will produce the table of prediction errors and diagnostic metrics from the
 Each experimental run evaluates:
 
 * Loss: `test_mae`
-* Model architecture displaying structure of component layers
+* Model architectural structure of component layers
 * Model parameter count
 * Model training time
-* Monitoring metrics: `test_mae_lag_01`, `test_mae_lag_02`, `test_mae_lag_03`
+* Diagnostic metrics: `test_mae_lag_01`, `test_mae_lag_02`, `test_mae_lag_03`
 * Reference: `test_mape`
 
 ---
@@ -138,7 +138,7 @@ Key findings include:
 * **DiffConv + LSTM** combinations achieved the highest overall predictive accuracy, with **DiffConv + GRU** combinations following closely behind. These architectural designs included positional encoding and attention.
 * **Positional encoding** without attention, either additive or concatenative mode, provided consistent but marginal improvements in MAE across most architectures.
 * **Attention combined with either positional encoding mode** significantly and consistently improved predictive accuracy when used in combination with LSTM or GRU temporal components.
-* **Concatenative positional encoding with attention** led to catastrophic degradation when combined with RNNs as the temporal component. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational quality of the model architecture, resulting in systematically poor and considerably diminished performance overall due to a poorly structured and miscalibrated embedding space.
+* **Concatenative positional encoding with attention** led to catastrophic degradation when combined with RNNs as the temporal component of the architecture. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational quality of the model architecture. This resulted in systematically poor and considerably diminished performance overall, due to a poorly structured and miscalibrated embedding space.
 
 ---
 
@@ -160,5 +160,6 @@ GitHub: **https://github.com/moses-b-alexander/**
 ## ⚖️ License
 
 No license — all rights reserved.
+
 
 
