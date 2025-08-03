@@ -15,7 +15,7 @@ This repository includes:
 
 ## Objective
 
-Spatiotemporal graph neural networks, augmented with representational enhancements like positional encoding and attention, forecast air pollution concentration values using air quality sensor network data and long-term climatology statistics. By modeling spatiotemporal relationships among air quality sensors, policymakers can more thoroughly understand patterns of pollution dispersion in cities (Zheng et al, 2015). Thus, they can make more optimal decisions to improve air quality via various environmental policy measures, consequently increasing life expectancy for urban residents.
+Spatiotemporal graph neural networks, augmented with representational enhancements like positional encoding and attention, forecast air pollution concentration values using air quality sensor network data and long-term climatology statistics. By modeling spatiotemporal relationships among air quality sensors, policymakers can more thoroughly understand patterns of pollution dispersion in cities (Zheng et al, 2015). Thus, they can make more optimal decisions to reduce air pollution via various environmental policy measures, consequently increasing life expectancy for urban residents.
 
 ---
 
@@ -28,13 +28,13 @@ Each model architecture consists of four components:
 * **Temporal Component**: A recurrent neural network layer: one of RNN, LSTM, or GRU
 * **Bidimensional Attention Mechanism**: Applied at the end to refine joint spatiotemporal representation; decoded by a linear layer
 
-Model variants differ in positional encoding strategy, spatial-temporal module combinations, and whether attention is applied. The hyperparameter definitions and hardware setup remain the same throughout.
+Model architectural configurations differ in positional encoding strategy, spatial-temporal module combination, and whether attention is applied. The hyperparameter definitions and hardware setup were constant throughout the experiment.
 
 ---
 
 ## Methodology
 
-The air quality data was obtained from the Urban Air Project by Microsoft Research (2014–2015) *https://www.microsoft.com/en-us/research/project/urban-air/*, and exogenous climatology covariates for the relevant timeframe were sourced from the World Bank Group's Climate Knowledge Portal *https://climateknowledgeportal.worldbank.org/country/china/climate-data-historical*. The models were developed using Torch Spatiotemporal library (tsl): https://torch-spatiotemporal.readthedocs.io/en/latest/index.html.
+The air quality sensor network data were obtained from the Urban Air Project by Microsoft Research (2014–2015) *https://www.microsoft.com/en-us/research/project/urban-air/*, and exogenous covariate climatology data for the relevant timeframe were retrieved from the World Bank Group's Climate Knowledge Portal *https://climateknowledgeportal.worldbank.org/country/china/climate-data-historical*. The models were developed using Torch Spatiotemporal library (tsl): https://torch-spatiotemporal.readthedocs.io/en/latest/index.html. Several common Python machine learning-related frameworks were also employed: PyTorch, Pandas, NumPy, Einops, Matplotlib, and others.
 
 1. **Load datasets**
 2. **Define air quality sensor network data**
@@ -137,7 +137,7 @@ Key findings include:
 * **DiffConv + LSTM** combinations achieved the highest overall predictive accuracy, with **DiffConv + GRU** combinations following closely behind. These architectural designs included positional encoding and attention.
 * **Positional encoding** without attention, either additive or concatenative mode, provided consistent but marginal improvements in MAE across most architectures.
 * **Attention combined with either positional encoding mode** significantly and consistently improved predictive accuracy when used in combination with LSTM or GRU temporal components.
-* **Concatenative positional encoding with attention** led to catastrophic degradation when combined with RNNs as the temporal component of the architecture. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational quality of the model architecture. This resulted in systematically poor and considerably diminished performance overall, due to a poorly structured and miscalibrated embedding space.
+* **Concatenative positional encoding with attention** led to catastrophic degradation in forecasting accuracy when combined with RNNs as the temporal component of the architecture. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational quality of the spatiotemporal embeddings learned in this model architecture. This resulted in systematically poor and considerably diminished performance overall, due to a poorly structured and miscalibrated embedding space.
 
 ---
 
@@ -150,6 +150,7 @@ Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Archite
 ## License
 
 No license — all rights reserved.
+
 
 
 
