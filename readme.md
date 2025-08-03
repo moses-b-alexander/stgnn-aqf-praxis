@@ -14,75 +14,74 @@ This repository includes:
 
 ---
 
-## 🔍 Objective
+## Objective
 
 Spatiotemporal graph neural networks, augmented with representational enhancements like positional encoding and attention, forecast air pollution concentration values using air quality sensor network data and long-term climatology statistics. By modeling spatiotemporal relationships among air quality sensors, policymakers can more thoroughly understand patterns of pollution dispersion in cities (Zheng et al, 2015). Thus, they can make more optimal decisions to improve air quality via various environmental policy measures, consequently increasing life expectancy for urban residents.
 
 ---
 
-## 🧠 Model Architecture Overview
+## Design
 
-Each model architecture consists of four stages:
+Each model architecture consists of four components:
 
 * **Positional Encoding**: Applied to raw input features using either additive or concatenative fusion to enhance input representation
-* **Spatial Component**: A graph convolutional network layer, one of GraphConv, DiffConv, or GATConv
-* **Temporal Component**: A recurrent neural network layer, one of RNN, LSTM, or GRU
+* **Spatial Component**: A graph convolutional network layer: one of GraphConv, DiffConv, or GATConv
+* **Temporal Component**: A recurrent neural network layer: one of RNN, LSTM, or GRU
 * **Bidimensional Attention Mechanism**: Applied at the end to refine joint spatiotemporal representation; decoded by a linear layer
 
-Model variants differ in positional encoding strategy, spatial-temporal module combinations, and whether attention is applied. The hyperparameter definitions remain the same throughout. 
+Model variants differ in positional encoding strategy, spatial-temporal module combinations, and whether attention is applied. The hyperparameter definitions and hardware setup remain the same throughout.
 
 ---
 
-## ⚙️ Methodology
+## Methodology
 
 The air quality data was obtained from the Urban Air Project by Microsoft Research (2014–2015) *https://www.microsoft.com/en-us/research/project/urban-air/*, and exogenous climatology covariates for the relevant timeframe were sourced from the World Bank Group's Climate Knowledge Portal *https://climateknowledgeportal.worldbank.org/country/china/climate-data-historical*. The models were developed using Torch Spatiotemporal library (tsl): https://torch-spatiotemporal.readthedocs.io/en/latest/index.html.
 
-1. **Load Datasets**
-2. **Define Spatiotemporal Graph Data**
+1. **Load datasets**
+2. **Define spatiotemporal graph data**
 
-   * Construct edges using similarity threshold value of *0.4*
-   * Apply *masking* for missing graph features
-   * Specify forecasting horizon of *4* and training window length of *20*
+   * Construct edges using distance threshold
+   * Apply masking for missing graph features
+   * Specify forecasting horizon and training window length
 3. **Preprocess Spatiotemporal Graph Data**
 
-   * Standardize graph features by subtracting the mean and dividing by the standard deviation
+   * Standardize PM2.5 concentration values
 4. **Preprocess Covariate Climatology Data**
 
    * Align covariate feature sequence lengths through duplication by hour
 5. **Merge datasets**
-6. **Prepare Model for Training**
+6. **Prepare Model**
 
-   * Split data into training, validation, and test sets in the ratio of *80%* / *05%* / *15%*
-   * Set batch size to *64*
-   * Define loss metrics *MAE* and *MAPE* for evaluation and monitoring
-   * Configure optimization strategy with learning rate *0.001*, optimization algorithm *Adam*, and weight decay *0.0001*
-7. **Establish logging and model checkpointing**
-8. **Train Model**
-9. **Test Model**
-10. **Evaluate Output**
+   * Split data into training, validation, and test datasets
+   * Set batch size
+   * Define loss metrics
+   * Configure optimization strategy
+7. **Establish logging and checkpointing**
+8. **Train and test Model**
+9. **Evaluate Output**
 
    * Analyze prediction error and diagnostic metrics
    * Review training and evaluation logs
 
 ---
 
-## 📁 Directory Structure of *experiment.zip*
+## Archive
 
 ```
 experiment.zip
-├── src/                 # Source code (1) file (duplicate of root src/)
-├── weather/             # Covariate climatology data (2) files in CSV format (duplicate of root weather/)
-├── data/                # Raw air quality sensor network data (2) files in H5 and NPY formats and downloaded using tsl
-├── dataset/             # Final processed dataset (1) file used for training in PT format (merged from files within data/ and weather/)
-├── table/               # table (1) file in CSV format of results averaged over 3 trials during experiment
-├── plots/               # summary visualization (52) files in PNG format of model errors and diagnostic metrics produced from table/
-├── requirements.txt     # Python 3.12 dependencies
+├── src/                 # Source code (1) file in .PY format (duplicate of root src/)
+├── weather/             # Covariate climatology data (2) files in .CSV format (duplicate of root weather/)
+├── data/                # Raw air quality sensor network data (2) files in .H5 and .NPY formats and downloaded using tsl module
+├── dataset/             # Final processed dataset (1) file used for training in .PT format (merged from data in files within data/ and weather/)
+├── table/               # Table of forecasting error, diagnostic metrics, model parameter count, and training duration (1) file in CSV format, averaged over 3 trials for each of 45 models
+├── plots/               # Summary visualization (52) files in PNG format of experimental data recorded in table/
+├── requirements.txt     # Python 3.12 pip dependency list
 ├── logs/ (excluded)     # Training logs and model checkpoints for all 3 trials of 45 models each (135 subdirectories)
 ```
 
 ---
 
-## 🧪 Running the Experiment
+## Usage
 
 Ensure you are using **Python 3.12**.
 
@@ -102,7 +101,7 @@ pip install -r requirements.txt
 python src/main.py > experiment.txt
 ```
 
-This will train all 45 models once, while producing training logs and diagnostic metrics.
+This will train all 45 models once (with the predefined hyperparameters).
 
 ### 📊 Generate Table and Plots
 
@@ -115,58 +114,37 @@ This will train all 45 models once, while producing training logs and diagnostic
 python src/main.py > visualization.txt
 ```
 
-This will produce:
-
-* `table/table_final.csv` (table of prediction errors and diagnostic metrics from the trial)
-* `plots/` (52 `.png` summary visualizations of prediction errors, parameter counts, and training times)
+This will produce the table of prediction errors and diagnostic metrics from the trial and 52 summary visualizations of forecasting mean absolute errors, model parameter counts, and training durations:
 
 ---
 
-## 📈 Evaluation Metrics
+## 📈 Evaluation
 
 Each experimental run evaluates:
 
 * Loss: `test_mae`
-* Monitoring metrics: `test_mae_lag_01`, `test_mae_lag_02`, `test_mae_lag_03`
-* Reference: `test_mape`
-* Model architecture displaying structure of layers
+* Model architecture displaying structure of component layers
 * Model parameter count
 * Model training time
-
-Metrics for one full trial are saved in `experiment.txt`.
-
----
-
-## 📦 Archive Notes
-
-The `experiment.zip` archive contains:
-
-* `src/`: duplicated from repository root
-* `weather/`: duplicated from repository root
-* `data/`: spatiotemporal graph dataset provided by `tsl`
-* `dataset/`: merged dataset created from processing and fusing files within `data/` and `weather/`
-* `table/`: summative table recording average performance over 3 trials for all 45 models
-* `plots/`: 52 summary chart images visualizing prediction errors, parameter counts, and training runtimes from `table/`
-* `requirements.txt`: dependency list for installation via Python 3.12 pip
-
-> ⚠️ `logs/` is excluded due to large folder size, because of checkpoints for each of 45 models for all 3 trials
+* Monitoring metrics: `test_mae_lag_01`, `test_mae_lag_02`, `test_mae_lag_03`
+* Reference: `test_mape`
 
 ---
 
 ## 📜 Results
 
-This experiment evaluated 45 spatiotemporal graph neural network models over 3 trials. Key findings include:
+Key findings include:
 
-* **DiffConv + LSTM** combinations achieved the highest overall predictive accuracy.
+* **DiffConv + LSTM** combinations achieved the highest overall predictive accuracy, with **DiffConv + GRU** combinations following closely behind. These architectural designs included positional encoding and attention.
 * **Positional encoding** without attention, either additive or concatenative mode, provided consistent but marginal improvements in MAE across most architectures.
 * **Attention combined with either positional encoding mode** significantly and consistently improved predictive accuracy when used in combination with LSTM or GRU temporal components.
-* **Concatenative positional encoding with attention** led to catastrophic degradation when paired with RNNs as the temporal component. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational capacity of the model architecture, resulting in systematically poor and considerably diminished performance across all trials.
+* **Concatenative positional encoding with attention** led to catastrophic degradation when combined with RNNs as the temporal component. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational quality of the model architecture, resulting in systematically poor and considerably diminished performance overall due to a poorly structured and miscalibrated embedding space.
 
 ---
 
 ## 📚 Citation
 
-Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Architectures for Air Quality Forecasting* (Doctoral dissertation). The George Washington University. https://github.com/moses-b-alexander/stgnn-aqf-praxis/
+Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting* (Doctoral dissertation). The George Washington University. https://github.com/moses-b-alexander/stgnn-aqf-praxis/
 
 ---
 
@@ -182,4 +160,5 @@ GitHub: **https://github.com/moses-b-alexander/**
 ## ⚖️ License
 
 No license — all rights reserved.
+
 
