@@ -2,7 +2,7 @@
 
 This repository supports the doctoral dissertation titled **Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting**, available at **https://github.com/moses-b-alexander/stgnn-aqf-praxis**.
 
-This repository contains the full experimental setup for reproducing the results of my research on spatiotemporal graph neural networks for air pollution forecasting. It includes source code files and a zipped folder containing the experimental archive.
+This repository contains the full experimental setup for reproducing the results of the research on spatiotemporal graph neural networks for air pollution forecasting. It includes source code files and a zipped folder containing the experimental archive.
 
 This repository includes:
 
@@ -81,14 +81,14 @@ experiment.zip
 ├── table/               # Table of forecasting error, diagnostic metrics, model parameter count, and training duration (1) file in CSV format, averaged over 3 trials for each of 45 models
 ├── plots/               # Summary visualization (52) files in PNG format of experimental data recorded in table/
 ├── requirements.txt     # Python 3.12 pip dependency list
-├── logs/ (excluded)     # Training logs and model checkpoints for all 3 trials of 45 models each
+├── logs/ [excluded]     # Training logs and model checkpoints for all 3 trials of 45 models each
 ```
 
 ---
 
 ## Usage
 
-Ensure you are using **Python 3.12**.
+This research uses ***Python 3.12***.
 
 ### Installation
 
@@ -119,7 +119,7 @@ This will train all 45 models once, with the defined hyperparameters.
 python src/main.py > visualization.txt
 ```
 
-This will produce the table of prediction errors and diagnostic metrics from the trial and 52 summary visualizations of forecasting mean absolute errors, model parameter counts, and training durations.
+This will produce the table of forecasting errors and diagnostic metrics from the trial and 52 summary visualizations of forecasting mean absolute errors, model parameter counts, and training durations.
 
 ---
 
@@ -141,7 +141,7 @@ Each experimental run evaluates:
 Key findings include:
 
 * **DiffConv + LSTM** combinations achieved the highest overall predictive accuracy, with **DiffConv + GRU** combinations following closely behind. Both of these architectural configurations included both positional encoding and attention.
-* **Positional encoding** without attention, either additive or concatenative mode, provided consistent but marginal improvements in MAE across most architectural configurations.
+* **Positional encoding without attention**, either additive or concatenative mode, provided consistent but marginal improvements in MAE across most architectural configurations.
 * **Attention combined with either positional encoding mode** significantly and consistently improved predictive accuracy when used in combination with LSTM or GRU temporal components.
 * **Concatenative positional encoding with attention** led to catastrophic degradation in forecasting accuracy when combined with RNNs as the temporal component. The combination of concatenative positional encoding, weak temporal modeling, and attention severely undermined the representational quality of the learned spatiotemporal embeddings. This resulted in systematically poor and considerably diminished performance overall, due to a poorly structured and miscalibrated embedding space.
 
@@ -156,15 +156,5 @@ Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Archite
 ## License
 
 No license — all rights reserved.
-
-
-
-
-
-
-
-
-
-
 
 
