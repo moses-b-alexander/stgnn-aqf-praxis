@@ -151,7 +151,9 @@ The key findings are:
 ## Citation
 
 Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting* (Doctoral dissertation). The George Washington University. 
+
 Dissertation: https://www.proquest.com/dissertations-theses/evaluating-spatiotemporal-graph-neural-network/docview/3237654380/se-2
+
 Code: https://github.com/moses-b-alexander/stgnn-aqf-praxis
 
 ---
