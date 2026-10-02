@@ -1,6 +1,6 @@
 # ***Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting***
 
-This repository supports the doctoral dissertation titled **Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting**, available at **https://github.com/moses-b-alexander/stgnn-aqf-praxis**.
+This repository supports the doctoral dissertation titled **Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting**, available at **https://www.proquest.com/dissertations-theses/evaluating-spatiotemporal-graph-neural-network/docview/3237654380/se-2**.
 
 This repository contains the full experimental setup for reproducing the results of the research on spatiotemporal graph neural networks for air pollution forecasting. It includes source code files and a zipped folder containing the experimental archive.
 
@@ -150,7 +150,9 @@ The key findings are:
 
 ## Citation
 
-Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting* (Doctoral dissertation). The George Washington University. https://github.com/moses-b-alexander/stgnn-aqf-praxis/
+Alexander, M. B. (2025). *Evaluating Spatiotemporal Graph Neural Network Architectural Design for Urban Air Pollution Forecasting* (Doctoral dissertation). The George Washington University. 
+Dissertation: https://www.proquest.com/dissertations-theses/evaluating-spatiotemporal-graph-neural-network/docview/3237654380/se-2
+Code: https://github.com/moses-b-alexander/stgnn-aqf-praxis
 
 ---
 
